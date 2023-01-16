@@ -16,7 +16,7 @@ public class SentenceNode extends Sentence {
     };
 
     public String toString() {
-        return "(" + this.left + (this.part.equals(".") ? "." : " ") +  this.right + ")";
+        return "(" + this.left + this.part +  this.right + ")";
     }
 
 }

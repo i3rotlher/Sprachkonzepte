@@ -14,11 +14,13 @@ public final class SentenceBuilder extends KleinerSatzParserBaseListener {
 
     @Override
     public void exitSentence(KleinerSatzParser.SentenceContext ctx) {
+        int a = ctx.getChildCount();
+        String e = ctx.getText();
         if (ctx.getChildCount() == 3) {
             Sentence right = this.stack.pop();
             Sentence left = this.stack.pop();
 //            String op = ctx.getChild(1).getText();
-            this.stack.push(new SentenceNode(left, "DOT (.)", right));
+            this.stack.push(new SentenceNode(left, "(.)", right));
         }
     }
 
@@ -29,7 +31,7 @@ public final class SentenceBuilder extends KleinerSatzParserBaseListener {
             Sentence right = this.stack.pop();
             Sentence left = this.stack.pop();
 //            String op = ctx.getChild(1).getText();
-            this.stack.push(new SentenceNode(left, "", right));
+            this.stack.push(new SentenceNode(left, " ", right));
         }
     }
 
@@ -39,7 +41,7 @@ public final class SentenceBuilder extends KleinerSatzParserBaseListener {
             Sentence right = this.stack.pop();
             Sentence left = this.stack.pop();
 //            String op = ctx.getChild(1).getText();
-            this.stack.push(new SentenceNode(left, "", right));
+            this.stack.push(new SentenceNode(left, " ", right));
         }
     }
 
