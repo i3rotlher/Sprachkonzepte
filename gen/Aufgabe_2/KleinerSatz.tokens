@@ -1,0 +1,6 @@
+WHAT=1
+WHERE=2
+DOT=3
+NAME=4
+WS=5
+'.'=3

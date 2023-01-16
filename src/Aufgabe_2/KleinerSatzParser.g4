@@ -1,14 +1,12 @@
-//FrageParser.g4
+//KleinerSatzParser.g4
 parser grammar KleinerSatzParser;
 
 options {tokenVocab=KleinerSatz;}
 
-sentence: (simple | simple_where | simple_with | long) DOT;
+sentence: long | sentence DOT long;
 
-simple: NAME WHAT;
+long: short | short value;
 
-simple_where: simple WHERE;
+short: value value;
 
-simple_with: simple WITH NAME;
-
-long: (simple)+ ;
+value: (NAME|WHERE|WHAT);

@@ -1,5 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
-
+package Aufgabe_2;
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -10,7 +10,7 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 @SuppressWarnings("CheckReturnValue")
-public class KleinerSatzParserBaseListener implements KleinerSatzParserListener {
+public abstract class KleinerSatzParserBaseListener implements KleinerSatzParserListener {
 	/**
 	 * {@inheritDoc}
 	 *
@@ -84,4 +84,12 @@ public class KleinerSatzParserBaseListener implements KleinerSatzParserListener 
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void visitErrorNode(ErrorNode node) { }
+
+	public abstract void exitExpr(KleinerSatzParser.SentenceContext ctx);
+
+	public abstract void exitMultExpr(ExprParser.MultExprContext ctx);
+
+	public abstract void exitMultExpr(KleinerSatzParser.SentenceContext ctx);
+
+	public abstract void exitValue(ExprParser.ValueContext ctx);
 }
