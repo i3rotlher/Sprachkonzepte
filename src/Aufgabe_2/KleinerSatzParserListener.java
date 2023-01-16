@@ -1,4 +1,5 @@
 // Generated from java-escape by ANTLR 4.11.1
+package Aufgabe_2;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -17,33 +18,33 @@ public interface KleinerSatzParserListener extends ParseTreeListener {
 	 */
 	void exitSentence(KleinerSatzParser.SentenceContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link KleinerSatzParser#simple}.
+	 * Enter a parse tree produced by {@link KleinerSatzParser#long}.
 	 * @param ctx the parse tree
 	 */
-	void enterSimple(KleinerSatzParser.SimpleContext ctx);
+	void enterLong(KleinerSatzParser.LongContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link KleinerSatzParser#simple}.
+	 * Exit a parse tree produced by {@link KleinerSatzParser#long}.
 	 * @param ctx the parse tree
 	 */
-	void exitSimple(KleinerSatzParser.SimpleContext ctx);
+	void exitLong(KleinerSatzParser.LongContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link KleinerSatzParser#simple_where}.
+	 * Enter a parse tree produced by {@link KleinerSatzParser#short}.
 	 * @param ctx the parse tree
 	 */
-	void enterSimple_where(KleinerSatzParser.Simple_whereContext ctx);
+	void enterShort(KleinerSatzParser.ShortContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link KleinerSatzParser#simple_where}.
+	 * Exit a parse tree produced by {@link KleinerSatzParser#short}.
 	 * @param ctx the parse tree
 	 */
-	void exitSimple_where(KleinerSatzParser.Simple_whereContext ctx);
+	void exitShort(KleinerSatzParser.ShortContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link KleinerSatzParser#simple_with}.
+	 * Enter a parse tree produced by {@link KleinerSatzParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void enterSimple_with(KleinerSatzParser.Simple_withContext ctx);
+	void enterValue(KleinerSatzParser.ValueContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link KleinerSatzParser#simple_with}.
+	 * Exit a parse tree produced by {@link KleinerSatzParser#value}.
 	 * @param ctx the parse tree
 	 */
-	void exitSimple_with(KleinerSatzParser.Simple_withContext ctx);
+	void exitValue(KleinerSatzParser.ValueContext ctx);
 }

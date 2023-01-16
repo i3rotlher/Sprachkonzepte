@@ -1,4 +1,5 @@
 package Aufgabe_2;// ExprBuilder.java
+import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import java.util.Stack;
@@ -12,37 +13,57 @@ public final class SentenceBuilder extends KleinerSatzParserBaseListener {
     }
 
     @Override
-    public void exitExpr(KleinerSatzParser.SentenceContext ctx) {
+    public void exitSentence(KleinerSatzParser.SentenceContext ctx) {
         if (ctx.getChildCount() == 3) {
             Sentence right = this.stack.pop();
             Sentence left = this.stack.pop();
-            String op = ctx.getChild(1).getText();
-            this.stack.push(new SentenceNode(left, right, op));
+//            String op = ctx.getChild(1).getText();
+            this.stack.push(new SentenceNode(left, "DOT (.)", right));
+        }
+    }
+
+
+    @Override
+    public void exitLong(KleinerSatzParser.LongContext ctx) {
+        if (ctx.getChildCount() == 2) {
+            Sentence right = this.stack.pop();
+            Sentence left = this.stack.pop();
+//            String op = ctx.getChild(1).getText();
+            this.stack.push(new SentenceNode(left, "", right));
         }
     }
 
     @Override
-    public void exitMultExpr(KleinerSatzParser.SentenceContext ctx) {
-        if (ctx.getChildCount() == 3) {
+    public void exitShort(KleinerSatzParser.ShortContext ctx) {
+        if (ctx.getChildCount() == 2) {
             Sentence right = this.stack.pop();
             Sentence left = this.stack.pop();
-            String op = ctx.getChild(1).getText();
-            this.stack.push(new SentenceNode(left, right, op));
+//            String op = ctx.getChild(1).getText();
+            this.stack.push(new SentenceNode(left, "", right));
         }
     }
 
+
     @Override
-    public void exitValue(KleinerSatzParser.SentenceContext ctx) {
-        String s = ctx.Numbe.getText();
+    public void exitValue(KleinerSatzParser.ValueContext ctx) {
+        String s = "";
         switch (ctx.getStart().getType()) {
-            case ExprLexer.PLUS:
-                s = ctx.PLUS().getText() + s;
+            case KleinerSatz.WHAT:
+                s = ctx.WHAT().getText() + s;
                 break;
-            case ExprLexer.MINUS:
-                s = ctx.MINUS().getText() + s;
+            case KleinerSatz.NAME:
+                s = ctx.NAME().getText() + s;
+                break;
+            case KleinerSatz.WHERE:
+                s = ctx.WHERE().getText() + s;
                 break;
         }
 
         this.stack.push(new Value(s));
+    }
+
+    @Override
+    public void visitErrorNode(ErrorNode errorNode) {
+
     }
 }

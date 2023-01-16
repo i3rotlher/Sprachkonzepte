@@ -28,37 +28,37 @@ public abstract class KleinerSatzParserBaseListener implements KleinerSatzParser
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSimple(KleinerSatzParser.SimpleContext ctx) { }
+	@Override public void enterLong(KleinerSatzParser.LongContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSimple(KleinerSatzParser.SimpleContext ctx) { }
+	@Override public void exitLong(KleinerSatzParser.LongContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSimple_where(KleinerSatzParser.Simple_whereContext ctx) { }
+	@Override public void enterShort(KleinerSatzParser.ShortContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSimple_where(KleinerSatzParser.Simple_whereContext ctx) { }
+	@Override public void exitShort(KleinerSatzParser.ShortContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSimple_with(KleinerSatzParser.Simple_withContext ctx) { }
+	@Override public void enterValue(KleinerSatzParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSimple_with(KleinerSatzParser.Simple_withContext ctx) { }
+	@Override public void exitValue(KleinerSatzParser.ValueContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -83,13 +83,4 @@ public abstract class KleinerSatzParserBaseListener implements KleinerSatzParser
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void visitErrorNode(ErrorNode node) { }
-
-	public abstract void exitExpr(KleinerSatzParser.SentenceContext ctx);
-
-	public abstract void exitMultExpr(ExprParser.MultExprContext ctx);
-
-	public abstract void exitMultExpr(KleinerSatzParser.SentenceContext ctx);
-
-	public abstract void exitValue(ExprParser.ValueContext ctx);
 }

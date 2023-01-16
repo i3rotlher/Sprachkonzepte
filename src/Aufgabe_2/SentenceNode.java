@@ -5,10 +5,10 @@ public class SentenceNode extends Sentence {
     public Sentence right;
     public String part;
 
-    public SentenceNode(Sentence left, Sentence right, String part) {
+    public SentenceNode(Sentence left, String part,  Sentence right) {
         this.left = left;
         this.right = right;
-        this. part = part;
+        this.part = part;
     }
 
     public String getPart() {
@@ -16,7 +16,7 @@ public class SentenceNode extends Sentence {
     };
 
     public String toString() {
-        return "(" + this.left + this.part + this.right + ")";
+        return "(" + this.left + (this.part.equals(".") ? "." : " ") +  this.right + ")";
     }
 
 }

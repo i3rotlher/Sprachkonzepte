@@ -1,8 +1,6 @@
 WHAT=1
 WHERE=2
 DOT=3
-WITH=4
-NAME=5
-WS=6
+NAME=4
+WS=5
 '.'=3
-'mit'=4
