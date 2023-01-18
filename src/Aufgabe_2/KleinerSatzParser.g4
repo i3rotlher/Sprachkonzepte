@@ -5,8 +5,8 @@ options {tokenVocab=KleinerSatz;}
 
 sentence: long | sentence DOT long;
 
-long: short | short value;
+long: WHERE short | short WHERE | short;
 
 short: value value;
 
-value: (NAME|WHERE|WHAT);
+value: (NAME|WHAT);

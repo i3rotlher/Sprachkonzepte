@@ -4,7 +4,7 @@ import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
 import java.util.Stack;
 
-public final class SentenceBuilder extends KleinerSatzParserBaseListener {
+public final class PrettySentenceBuilder extends KleinerSatzParserBaseListener {
     private Stack<Sentence> stack = new Stack<Sentence>();
 
     public Sentence build(ParseTree tree) {
@@ -14,13 +14,11 @@ public final class SentenceBuilder extends KleinerSatzParserBaseListener {
 
     @Override
     public void exitSentence(KleinerSatzParser.SentenceContext ctx) {
-        int a = ctx.getChildCount();
         String e = ctx.getText();
         if (ctx.getChildCount() == 3) {
             Sentence right = this.stack.pop();
             Sentence left = this.stack.pop();
-//            String op = ctx.getChild(1).getText();
-            this.stack.push(new SentenceNode(left, "(.)", right));
+            this.stack.push(new SentenceNode(left, ".[dot]\n", right));
         }
     }
 
@@ -45,19 +43,37 @@ public final class SentenceBuilder extends KleinerSatzParserBaseListener {
         }
     }
 
+    public String translate(String s) {
+        switch(s) {
+            case "rennt":
+                return "runs";
+            case "geht":
+                return "walks";
+            case "sprintet":
+                return "sprints";
+            case "nach Hause":
+                return "home";
+            case "in die Schule":
+                return "to school";
+            case "zur Uni":
+                return "to the university";
+        }
+        return s;
+    }
+
 
     @Override
     public void exitValue(KleinerSatzParser.ValueContext ctx) {
         String s = "";
         switch (ctx.getStart().getType()) {
             case KleinerSatz.WHAT:
-                s = ctx.WHAT().getText() + s;
+                s = translate(ctx.WHAT().getText()) + "[what]" + s;
                 break;
             case KleinerSatz.NAME:
-                s = ctx.NAME().getText() + s;
+                s = translate(ctx.NAME().getText()) + "[name]" + s;
                 break;
             case KleinerSatz.WHERE:
-                s = ctx.WHERE().getText() + s;
+                s = translate(ctx.WHERE().getText()) + "[where]" + s;
                 break;
         }
 

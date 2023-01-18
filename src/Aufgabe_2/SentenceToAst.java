@@ -15,7 +15,7 @@ public final class SentenceToAst {
 //        Scanner sc = new Scanner(System.in);  // Create a Scanner object
 //        String input = sc.nextLine();//read input string
 //        KleinerSatz lexer = new KleinerSatz(CharStreams.fromStream(System.in));
-        KleinerSatz lexer = new KleinerSatz(CharStreams.fromString("Tom rennt nach Hause. Max geht. nach Hause geht Tim. Peter geht"));
+        KleinerSatz lexer = new KleinerSatz(CharStreams.fromString("Tom rennt nach Hause. max Max geht. nach Hause geht Tim. Peter geht"));
         KleinerSatzParser parser = new KleinerSatzParser(new CommonTokenStream(lexer));
         ParseTree tree = parser.sentence();
         if (parser.getNumberOfSyntaxErrors() > 0) {
@@ -24,5 +24,9 @@ public final class SentenceToAst {
         }
         Sentence ast = new SentenceBuilder().build(tree);
         System.out.printf("Sentence.toString() = \"%s\"%n", ast);
+
+        Sentence psb = new PrettySentenceBuilder().build(tree);
+        String f = String.format("PrettySentence.toString() = %n%s%n", psb).replace("(", "").replace(")", "");
+        System.out.printf(f);
     }
 }
