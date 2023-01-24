@@ -13,9 +13,6 @@ td { font-family: monospace }
 $c:map()$
 >>
 map(c) ::= <<
-<h2>$c.name$:</h2>
-<table>
-<tr>
 $if(c.interface)$
 $interface(c)$
 $else$
@@ -25,12 +22,18 @@ $endif$
 </table>
 >>
 class(c) ::= <<
+<h2>class $c.name$:</h2>
+<table>
+<tr>
 <tr>
 <th>Interface   </th><th>Methods</th>
 </tr>
 $c.interfaces:interface_and_methods()$
 >>
 interface(i) ::= <<
+<h2>interface $c.name$:</h2>
+<table>
+<tr>
 <tr>
 <th>Methods</th>
 </tr>

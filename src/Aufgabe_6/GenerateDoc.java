@@ -19,7 +19,6 @@ public class GenerateDoc {
         writer.write(htmlSeite);
         writer.close();
         File htmlFile = new File("classes.html");
-        classes[1].isInterface();
         Desktop.getDesktop().browse(htmlFile.toURI());
     }
 }
