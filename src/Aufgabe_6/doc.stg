@@ -1,0 +1,45 @@
+delimiters "$", "$"
+doc(c) ::= <<
+<!DOCTYPE html>
+<html lang="de">
+<body>
+$c.classes:map()$
+>>
+map(c) ::= <<
+<b>$c.name$</b>
+<table>
+<tr>
+$if(c.class)$
+$class(c)$
+$else$
+$interface(c)$
+$endif$
+</tr>
+</table>
+>>
+class(c) ::= <<
+<tr>
+<th>Interface</th><th>Methods</th>
+</tr>
+$c.interfaces:interface_and_methods()$
+>>
+interface(i) ::= <<
+<tr>
+<th>Methods</th>
+</tr>
+$c.methods:methods()$
+>>
+interface_and_methods(f) ::= <<
+<tr>
+<td>$f.interface$</td>
+$f.methods:method()$
+</tr>
+>>
+method(m) ::= <<
+<td>$m.name$</td>
+>>
+methods(m) ::= <<
+<tr>
+<td>$m.name$</td>
+</tr>
+>>

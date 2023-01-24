@@ -1,0 +1,56 @@
+delimiters "$", "$"
+doc(c) ::= <<
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<style type="text/css">
+th, td { border-bottom: thin solid; padding: 4px; text-align: left; }
+td { font-family: monospace }
+</style>
+</head>
+<body>
+<h1>Sprachkonzepte, Aufgabe 6 solved by Max Kuhwald :)</h1>
+$c:map()$
+>>
+map(c) ::= <<
+<h2>$c.name$:</h2>
+<table>
+<tr>
+$if(c.interface)$
+$interface(c)$
+$else$
+$class(c)$
+$endif$
+</tr>
+</table>
+>>
+class(c) ::= <<
+<tr>
+<th>Interface   </th><th>Methods</th>
+</tr>
+$c.interfaces:interface_and_methods()$
+>>
+interface(i) ::= <<
+<tr>
+<th>Methods</th>
+</tr>
+<tr>
+<td>
+$c.methods:method()$
+</td>
+</tr>
+>>
+interface_and_methods(f) ::= <<
+<tr>
+<td>$f.name$</td>
+<td>
+$f.methods:method()$
+</td>
+</tr>
+>>
+method(m) ::= <<
+$m.returnType.name$ $m.name$($m.parameters:parameters(); seperator=","$)<br>
+>>
+parameters(f) ::= <<
+$f.type.name$
+>>

@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public final class Procedural {
     private Procedural() { }
@@ -24,9 +23,9 @@ public final class Procedural {
 //        readLines(input, lines);
 //        removeEmptyLines(lines);
 //        removeShortLines(lines);
+
 //        int n = totalLineLengths(lines);
         long stop = System.nanoTime();
-
         System.out.printf("result = %d (%d microsec)%n", n, (stop - start) / 1000);
     }
 
@@ -39,18 +38,18 @@ public final class Procedural {
 
     private static void removeEmptyLines(List<String> lines) {
         List<String> copy = new LinkedList<>(lines);
-        for(String s : lines) {
+        for(String s : copy) {
             if(s.isEmpty()) {
-                copy.remove(s);
+                lines.remove(s);
             }
         }
     }
 
     private static void removeShortLines(List<String> lines) {
         List<String> copy = new LinkedList<>(lines);
-        for(String s : lines) {
+        for(String s : copy) {
             if(s.length() < MIN_LENGTH) {
-                copy.remove(s);
+                lines.remove(s);
             }
         }
     }
